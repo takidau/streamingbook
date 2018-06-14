@@ -53,25 +53,6 @@ public class StateAndTimers {
     private static final Logger LOG = LoggerFactory.getLogger(StateAndTimers.class);
 
     @DefaultCoder(AvroCoder.class)
-    static class VisitOrImpression {
-        @Nullable private Visit visit;
-        @Nullable private Impression impression;
-
-        @SuppressWarnings("unused")
-        public VisitOrImpression() {
-        }
-
-        public VisitOrImpression(Visit visit, Impression impression) {
-            this.visit = visit;
-            this.impression = impression;
-        }
-
-        public Visit visit() { return visit; }
-        public Impression impression() { return impression; }
-    }
-
-
-    @DefaultCoder(AvroCoder.class)
     static class Visit {
         @Nullable private String url;
         @Nullable private Instant timestamp;
@@ -100,7 +81,7 @@ public class StateAndTimers {
 
         @Override
         public String toString() {
-            return String.format("Visit{ %s %s from:%s%s }", url, timestamp, referer, isGoal ? " isGoal" : "");
+            return String.format("{ %s %s from:%s%s }", url, timestamp, referer, isGoal ? " isGoal" : "");
         }
     }
 
@@ -132,8 +113,26 @@ public class StateAndTimers {
 
         @Override
         public String toString() {
-            return String.format("Impression{ %s source:%s target:%s %s }", id, sourceUrl, targetUrl, timestamp);
+            return String.format("{ %s source:%s target:%s %s }", id, sourceUrl, targetUrl, timestamp);
         }
+    }
+
+    @DefaultCoder(AvroCoder.class)
+    static class VisitOrImpression {
+        @Nullable private Visit visit;
+        @Nullable private Impression impression;
+
+        @SuppressWarnings("unused")
+        public VisitOrImpression() {
+        }
+
+        public VisitOrImpression(Visit visit, Impression impression) {
+            this.visit = visit;
+            this.impression = impression;
+        }
+
+        public Visit visit() { return visit; }
+        public Impression impression() { return impression; }
     }
 
     @DefaultCoder(AvroCoder.class)
@@ -217,10 +216,10 @@ public class StateAndTimers {
 
         @ProcessElement
         public void processElement(@Element KV<String, VisitOrImpression> kv,
-                                   @StateId("visits") MapState<String, Visit> visits,
-                                   @StateId("impressions") MapState<String, Impression> impressions,
-                                   @StateId("goals") SetState<Visit> goals,
-                                   @StateId("minGoal") ValueState<Instant> minGoal,
+                                   @StateId("visits") MapState<String, Visit> visitsState,
+                                   @StateId("impressions") MapState<String, Impression> impressionsState,
+                                   @StateId("goals") SetState<Visit> goalsState,
+                                   @StateId("minGoal") ValueState<Instant> minGoalState,
                                    @TimerId("attribution") Timer attributionTimer) {
             Visit visit = kv.getValue().visit();
             Impression impression = kv.getValue().impression();
@@ -228,15 +227,15 @@ public class StateAndTimers {
             if (visit != null) {
                 if (!visit.isGoal()) {
                     LOG.info("Adding visit: {}", visit);
-                    visits.put(visit.url(), visit);
+                    visitsState.put(visit.url(), visit);
                 } else {
                     LOG.info("Adding goal (if absent): {}", visit);
-                    goals.addIfAbsent(visit);
-                    Instant minTimestamp = minGoal.read();
+                    goalsState.addIfAbsent(visit);
+                    Instant minTimestamp = minGoalState.read();
                     if (minTimestamp == null || visit.timestamp().isBefore(minTimestamp)) {
                         LOG.info("Setting timer from {} to {}", Utils.formatTime(minTimestamp), Utils.formatTime(visit.timestamp()));
                         attributionTimer.set(visit.timestamp());
-                        minGoal.write(visit.timestamp());
+                        minGoalState.write(visit.timestamp());
                     }
                     LOG.info("Done with goal");
                 }
@@ -244,10 +243,10 @@ public class StateAndTimers {
             if (impression != null) {
                 // Dedup logical impression duplicates with the same source and target URL. In
                 // this case, first one to arrive (in processing time) wins. A more robust approach
-                // might be to pick the first one in event time, but that would require ane extra read before
-                // commit, so the processing-time approach may be slightly more performant.
+                // might be to pick the first one in event time, but that would require an extra read
+                // before commit, so the processing-time approach may be slightly more performant.
                 LOG.info("Adding impression (if absent): {} → {}", impression.sourceAndTarget(), impression);
-                impressions.putIfAbsent(impression.sourceAndTarget(), impression);
+                impressionsState.putIfAbsent(impression.sourceAndTarget(), impression);
             }
         }
 

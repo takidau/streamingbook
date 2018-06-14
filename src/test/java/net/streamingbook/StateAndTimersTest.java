@@ -51,7 +51,7 @@ public class StateAndTimersTest {
     }
     
     private static TestStream<KV<String, VisitOrImpression>> createStream() {
-        // Impressions and visits, in event-time order, for two attributable goals.
+	// Impressions and visits, in event-time order, for two (logical) attributable impressions and one unattributable impression.
         Impression signupImpression = new Impression(123L, "http://search.com?q=xyz", "http://xyz.com/", Utils.parseTime("12:01:00"));
         Visit signupVisit = new Visit("http://xyz.com/", Utils.parseTime("12:01:10"), "http://search.com?q=xyz", false/*isGoal*/);
         Visit signupGoal = new Visit("http://xyz.com/join-mailing-list", Utils.parseTime("12:01:30"), "http://xyz.com/", true/*isGoal*/);
