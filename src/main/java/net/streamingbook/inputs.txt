@@ -1,0 +1,9 @@
+Julie,	TeamX, 5, T12:00:26, 12:05:19
+Ed,	TeamX, 7, T12:02:26, 12:05:39
+Amy,	TeamX, 3, T12:03:39, 12:06:13
+Fred,	TeamX, 4, T12:04:19, 12:06:39
+Julie,	TeamX, 8, T12:03:06, 12:07:06
+Naomi,	TeamX, 3, T12:06:39, 12:07:19
+Frank,	TeamX, 9, T12:01:26, 12:08:19
+Becky,	TeamX, 8, T12:07:26, 12:08:39
+Naomi,	TeamX, 1, T12:07:46, 12:09:00
