@@ -1,2 +1,2 @@
 # streamingbook
-Code snippets from the Streaming Systems book (streamingbook.net).
+Code snippets from the Streaming Systems book: http://streamingbook.net
