@@ -58,6 +58,7 @@ public class BeamModelTest {
         return TimestampedValue.of(KV.of(team, score), parseTime(eventTime));
     }
     
+    // Creates test inputs as a bounded set of values with batch processing semantics.
     Create.TimestampedValues<KV<String, Integer>> createBatch() {
         return Create.timestamped(
             score("TeamX", 5, "12:00:26"),
@@ -77,36 +78,13 @@ public class BeamModelTest {
         HEURISTIC;
     }
 
-    TestStream<KV<String, Integer>> createStream() {
-        return TestStream.create(
-            KvCoder.of(StringUtf8Coder.of(), VarIntCoder.of()))
-            .advanceWatermarkTo(BASE_TIME)  // Test assumes processing time begins there as well.
-            .advanceProcessingTime(to("12:04:59"))
-            .addElements(score("TeamX", 5, "12:00:26"))
-            .advanceProcessingTime(to("12:05:39"))
-            .addElements(score("TeamX", 7, "12:02:26"))
-            .advanceProcessingTime(to("12:06:13"))
-            .addElements(score("TeamX", 3, "12:03:39"))
-            .advanceProcessingTime(to("12:06:39"))
-            .addElements(score("TeamX", 4, "12:04:19"))
-            .advanceProcessingTime(to("12:07:06"))
-            .addElements(score("TeamX", 8, "12:03:06"))
-            .advanceProcessingTime(to("12:07:19"))
-            .addElements(score("TeamX", 3, "12:06:39"))
-            .advanceProcessingTime(to("12:08:19"))
-            .addElements(score("TeamX", 9, "12:01:26"))
-            .advanceProcessingTime(to("12:08:39"))
-            .addElements(score("TeamX", 8, "12:07:26"))
-            .advanceProcessingTime(to("12:09:00"))
-            .addElements(score("TeamX", 1, "12:07:46"))
-            .advanceProcessingTime(to("12:10:00"))
-            .advanceWatermarkToInfinity();
-    }
-    
+    // Creates test inputs as a bounded set of values with stream processing semantics.
     TestStream<KV<String, Integer>> createStream(WatermarkType watermark) {
         return createStream(watermark, false/*extraSix*/);
     }
 
+    // The extraSix parameter is for inserting the extra value of 6 needed for the
+    // allowed lateness example.
     TestStream<KV<String, Integer>> createStream(WatermarkType watermark, boolean extraSix) {
         TestStream.Builder<KV<String, Integer>> stream = TestStream.create(
             KvCoder.of(StringUtf8Coder.of(), VarIntCoder.of()))
@@ -156,7 +134,8 @@ public class BeamModelTest {
         }
         stream = stream.advanceProcessingTime(to("12:09:30"));
         if (watermark == WatermarkType.HEURISTIC)
-          stream = stream.advanceWatermarkTo(parseTime("12:08:00"));
+          stream = stream.advanceWatermarkTo(parseTime("12:08:30"));
+        stream = stream.advanceProcessingTime(to("12:10:00"));
         return stream.advanceWatermarkToInfinity();
     }
 
@@ -189,7 +168,7 @@ public class BeamModelTest {
 
     @Test
     public void example2_4_figure2_7_alignedDelayMicrobatch() {
-	runTest(createStream(),
+	runTest(createStream(WatermarkType.BATCH),
 		new BeamModel.Example2_4());
     }
 

@@ -41,13 +41,15 @@ public class BeamModel {
     static final Duration ONE_MINUTE = Duration.standardMinutes(1);
     static final Duration TWO_MINUTES = Duration.standardMinutes(2);
 
+    // Converts each Team/Score pair into a string with window and pane information,
+    // for verfying output in the unit tests.
     static class FormatAsStrings extends DoFn<KV<String, Integer>, String> {
         @ProcessElement
         public void processElement(@Element KV<String, Integer> kv,
-				   @Timestamp Instant timestamp,
-				   BoundedWindow window,
-				   PaneInfo pane,
-				   OutputReceiver<String> output) {
+                                   @Timestamp Instant timestamp,
+                                   BoundedWindow window,
+                                   PaneInfo pane,
+                                   OutputReceiver<String> output) {
             StringBuilder builder = new StringBuilder(String.format(
                 "%s: %s:%-2d %s %-7s index=%d",
                 Utils.formatWindow(window), kv.getKey(), kv.getValue(),
@@ -144,6 +146,10 @@ public class BeamModel {
                 .apply(ParDo.of(new FormatAsStrings()));
         }
 
+        // These panes are kind of funky relative to what's presented in the book, and I'm
+        // not 100% sure why yet (it would help if Beam gave access to the processing time
+        // at which a given pane was materialized). For now, I wouldn't pay too much attention
+        // to this one. :-)
         @Override
         public String[] getExpectedResults() {
             return new String[] {
@@ -367,7 +373,8 @@ public class BeamModel {
                 "[11:02:24, 11:05:19): TeamX:22 11:05:18 ON_TIME index=1 onTimeIndex=0",
                 "[11:00:26, 11:05:19): TeamX:36 11:05:18 LATE    index=0 onTimeIndex=0 isFirst",
                 "[11:06:39, 11:07:39): TeamX:3  11:07:38 EARLY   index=0 isFirst",
-                "[11:06:39, 11:08:46): TeamX:12 11:08:45 ON_TIME index=0 onTimeIndex=0 isFirst isLast"
+                "[11:06:39, 11:08:46): TeamX:12 11:08:45 EARLY   index=0 isFirst",
+		"[11:06:39, 11:08:46): TeamX:12 11:08:45 ON_TIME index=1 onTimeIndex=0 isLast"
             };
         }
     }
@@ -381,23 +388,23 @@ public class BeamModel {
         @Override
         public PCollection<String> expand(PCollection<KV<String, Integer>> input) {
             return input
-		.apply(Window.into(new ValidityWindows()))
-		.apply(Sum.integersPerKey())
-		.apply(ParDo.of(new FormatAsStrings()));
+                .apply(Window.into(new ValidityWindows()))
+                .apply(Sum.integersPerKey())
+                .apply(ParDo.of(new FormatAsStrings()));
         }
 
         @Override
         public String[] getExpectedResults() {
             return new String[] {
-		"[11:00:26, 11:01:25): TeamX:5  11:01:24 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-		"[11:01:25, 11:02:24): TeamX:9  11:02:23 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-		"[11:02:24, 11:03:06): TeamX:7  11:03:05 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-		"[11:03:06, 11:03:39): TeamX:8  11:03:38 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-		"[11:03:39, 11:04:19): TeamX:3  11:04:18 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-		"[11:04:19, 11:06:39): TeamX:4  11:06:38 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-		"[11:06:39, 11:07:26): TeamX:3  11:07:25 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-		"[11:07:26, 11:07:46): TeamX:8  11:07:45 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-		"[11:07:46, END_OF_GLOBAL_WINDOW): TeamX:1  04:00:54 ON_TIME index=0 onTimeIndex=0 isFirst isLast"
+                "[11:00:26, 11:01:25): TeamX:5  11:01:24 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[11:01:25, 11:02:24): TeamX:9  11:02:23 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[11:02:24, 11:03:06): TeamX:7  11:03:05 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[11:03:06, 11:03:39): TeamX:8  11:03:38 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[11:03:39, 11:04:19): TeamX:3  11:04:18 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[11:04:19, 11:06:39): TeamX:4  11:06:38 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[11:06:39, 11:07:26): TeamX:3  11:07:25 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[11:07:26, 11:07:46): TeamX:8  11:07:45 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[11:07:46, END_OF_GLOBAL_WINDOW): TeamX:1  04:00:54 ON_TIME index=0 onTimeIndex=0 isFirst isLast"
             };
         }
     }
