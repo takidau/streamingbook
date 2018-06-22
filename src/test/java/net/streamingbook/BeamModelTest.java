@@ -240,4 +240,10 @@ public class BeamModelTest {
 	runTest(createStream(WatermarkType.HEURISTIC),
 		new BeamModel.Example4_3());
     }
+
+    @Test
+    public void validityWindowsTest() {
+	runTest(createStream(WatermarkType.PERFECT),
+		new BeamModel.ValidityWindowsTest());
+    }
 }

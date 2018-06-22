@@ -371,4 +371,34 @@ public class BeamModel {
             };
         }
     }
+
+    // Verifies that the ValidityWindows implementation works. This specific example isn't
+    // in the book, it's just sending the same input set as all of the above tests through
+    // the ValidityWindows transform and verifying that each element ends up in a window
+    // that extends from its original event time until the event time of the next successive
+    // element.
+    public static class ValidityWindowsTest extends ExampleTransform {
+        @Override
+        public PCollection<String> expand(PCollection<KV<String, Integer>> input) {
+            return input
+		.apply(Window.into(new ValidityWindows()))
+		.apply(Sum.integersPerKey())
+		.apply(ParDo.of(new FormatAsStrings()));
+        }
+
+        @Override
+        public String[] getExpectedResults() {
+            return new String[] {
+		"[11:00:26, 11:01:25): TeamX:5  11:01:24 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+		"[11:01:25, 11:02:24): TeamX:9  11:02:23 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+		"[11:02:24, 11:03:06): TeamX:7  11:03:05 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+		"[11:03:06, 11:03:39): TeamX:8  11:03:38 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+		"[11:03:39, 11:04:19): TeamX:3  11:04:18 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+		"[11:04:19, 11:06:39): TeamX:4  11:06:38 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+		"[11:06:39, 11:07:26): TeamX:3  11:07:25 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+		"[11:07:26, 11:07:46): TeamX:8  11:07:45 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+		"[11:07:46, END_OF_GLOBAL_WINDOW): TeamX:1  04:00:54 ON_TIME index=0 onTimeIndex=0 isFirst isLast"
+            };
+        }
+    }
 }
