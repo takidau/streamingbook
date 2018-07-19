@@ -95,10 +95,10 @@ public class BeamModel {
 
         @Override
         public String[] getExpectedResults() {
-            return new String[] { "[11:00:00, 11:02:00): TeamX:14 11:01:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                                  "[11:02:00, 11:04:00): TeamX:18 11:03:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                                  "[11:04:00, 11:06:00): TeamX:4  11:05:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                                  "[11:06:00, 11:08:00): TeamX:12 11:07:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast" };
+            return new String[] { "[12:00:00, 12:02:00): TeamX:14 12:01:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                                  "[12:02:00, 12:04:00): TeamX:18 12:03:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                                  "[12:04:00, 12:06:00): TeamX:4  12:05:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                                  "[12:06:00, 12:08:00): TeamX:12 12:07:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast" };
         }
     }
 
@@ -118,15 +118,15 @@ public class BeamModel {
         @Override
         public String[] getExpectedResults() {
             return new String[] {
-                "[11:00:00, 11:02:00): TeamX:5  11:01:59 EARLY   index=0 isFirst",
-                "[11:00:00, 11:02:00): TeamX:14 11:01:59 EARLY   index=1",
-                "[11:02:00, 11:04:00): TeamX:7  11:03:59 EARLY   index=0 isFirst",
-                "[11:02:00, 11:04:00): TeamX:10 11:03:59 EARLY   index=1",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 EARLY   index=2",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 EARLY   index=0 isFirst",
-                "[11:06:00, 11:08:00): TeamX:3  11:07:59 EARLY   index=0 isFirst",
-                "[11:06:00, 11:08:00): TeamX:11 11:07:59 EARLY   index=1",
-                "[11:06:00, 11:08:00): TeamX:12 11:07:59 EARLY   index=2"
+                "[12:00:00, 12:02:00): TeamX:5  12:01:59 EARLY   index=0 isFirst",
+                "[12:00:00, 12:02:00): TeamX:14 12:01:59 EARLY   index=1",
+                "[12:02:00, 12:04:00): TeamX:7  12:03:59 EARLY   index=0 isFirst",
+                "[12:02:00, 12:04:00): TeamX:10 12:03:59 EARLY   index=1",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 EARLY   index=2",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 EARLY   index=0 isFirst",
+                "[12:06:00, 12:08:00): TeamX:3  12:07:59 EARLY   index=0 isFirst",
+                "[12:06:00, 12:08:00): TeamX:11 12:07:59 EARLY   index=1",
+                "[12:06:00, 12:08:00): TeamX:12 12:07:59 EARLY   index=2"
             };
         }
     }
@@ -153,14 +153,14 @@ public class BeamModel {
         @Override
         public String[] getExpectedResults() {
             return new String[] {
-                "[11:00:00, 11:02:00): TeamX:5  11:01:59 EARLY   index=0 isFirst",
-                "[11:00:00, 11:02:00): TeamX:14 11:01:59 ON_TIME index=1 onTimeIndex=0 isLast",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 EARLY   index=0 isFirst",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 ON_TIME index=1 onTimeIndex=0 isLast",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 EARLY   index=0 isFirst",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 ON_TIME index=1 onTimeIndex=0 isLast",
-                "[11:06:00, 11:08:00): TeamX:12 11:07:59 EARLY   index=0 isFirst",
-                "[11:06:00, 11:08:00): TeamX:12 11:07:59 ON_TIME index=1 onTimeIndex=0 isLast"
+                "[12:00:00, 12:02:00): TeamX:5  12:01:59 EARLY   index=0 isFirst",
+                "[12:00:00, 12:02:00): TeamX:14 12:01:59 ON_TIME index=1 onTimeIndex=0 isLast",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 EARLY   index=0 isFirst",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 ON_TIME index=1 onTimeIndex=0 isLast",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 EARLY   index=0 isFirst",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 ON_TIME index=1 onTimeIndex=0 isLast",
+                "[12:06:00, 12:08:00): TeamX:12 12:07:59 EARLY   index=0 isFirst",
+                "[12:06:00, 12:08:00): TeamX:12 12:07:59 ON_TIME index=1 onTimeIndex=0 isLast"
             };
         }
     }
@@ -181,14 +181,14 @@ public class BeamModel {
         @Override
         public String[] getExpectedResults() {
             return new String[] {
-                "[11:00:00, 11:02:00): TeamX:5  11:01:59 EARLY   index=0 isFirst",
-                "[11:00:00, 11:02:00): TeamX:14 11:01:59 ON_TIME index=1 onTimeIndex=0 isLast",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 EARLY   index=0 isFirst",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 ON_TIME index=1 onTimeIndex=0 isLast",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 EARLY   index=0 isFirst",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 ON_TIME index=1 onTimeIndex=0 isLast",
-                "[11:06:00, 11:08:00): TeamX:12 11:07:59 EARLY   index=0 isFirst",
-                "[11:06:00, 11:08:00): TeamX:12 11:07:59 ON_TIME index=1 onTimeIndex=0 isLast"
+                "[12:00:00, 12:02:00): TeamX:5  12:01:59 EARLY   index=0 isFirst",
+                "[12:00:00, 12:02:00): TeamX:14 12:01:59 ON_TIME index=1 onTimeIndex=0 isLast",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 EARLY   index=0 isFirst",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 ON_TIME index=1 onTimeIndex=0 isLast",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 EARLY   index=0 isFirst",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 ON_TIME index=1 onTimeIndex=0 isLast",
+                "[12:06:00, 12:08:00): TeamX:12 12:07:59 EARLY   index=0 isFirst",
+                "[12:06:00, 12:08:00): TeamX:12 12:07:59 ON_TIME index=1 onTimeIndex=0 isLast"
             };
         }
     }
@@ -208,10 +208,10 @@ public class BeamModel {
         @Override
         public String[] getExpectedResults() {
             return new String[] {
-                "[11:00:00, 11:02:00): TeamX:14 11:01:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:06:00, 11:08:00): TeamX:12 11:07:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast"
+                "[12:00:00, 12:02:00): TeamX:14 12:01:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:06:00, 12:08:00): TeamX:12 12:07:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast"
             };
         }
     }
@@ -221,10 +221,10 @@ public class BeamModel {
         @Override
         public String[] getExpectedResults() {
             return new String[] {
-                "[11:00:00, 11:02:00): TeamX:5  11:01:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:06:00, 11:08:00): TeamX:12 11:07:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast"
+                "[12:00:00, 12:02:00): TeamX:5  12:01:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:06:00, 12:08:00): TeamX:12 12:07:59 ON_TIME index=0 onTimeIndex=0 isFirst isLast"
             };
         }
     }
@@ -252,15 +252,15 @@ public class BeamModel {
             // is triggering the ON_TIME panes, and not the final advancement of the watermark to infinity
             // (which would also mark the pane as last).
             return new String[] {
-                "[11:00:00, 11:02:00): TeamX:5  11:01:59 EARLY   index=0 isFirst",
-                "[11:00:00, 11:02:00): TeamX:14 11:01:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:02:00, 11:04:00): TeamX:10 11:03:59 EARLY   index=0 isFirst",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 EARLY   index=1",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 ON_TIME index=2 onTimeIndex=0",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 EARLY   index=0 isFirst",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:06:00, 11:08:00): TeamX:3  11:07:59 EARLY   index=0 isFirst",
-                "[11:06:00, 11:08:00): TeamX:12 11:07:59 ON_TIME index=1 onTimeIndex=0"
+                "[12:00:00, 12:02:00): TeamX:5  12:01:59 EARLY   index=0 isFirst",
+                "[12:00:00, 12:02:00): TeamX:14 12:01:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:02:00, 12:04:00): TeamX:10 12:03:59 EARLY   index=0 isFirst",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 EARLY   index=1",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 ON_TIME index=2 onTimeIndex=0",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 EARLY   index=0 isFirst",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:06:00, 12:08:00): TeamX:3  12:07:59 EARLY   index=0 isFirst",
+                "[12:06:00, 12:08:00): TeamX:12 12:07:59 ON_TIME index=1 onTimeIndex=0"
             };
         }
     }
@@ -273,15 +273,15 @@ public class BeamModel {
             // is triggering the ON_TIME panes, and not the final advancement of the watermark to infinity
             // (which would also mark the pane as last).
             return new String[] {
-                "[11:00:00, 11:02:00): TeamX:5  11:01:59 EARLY   index=0 isFirst",
-                "[11:00:00, 11:02:00): TeamX:5  11:01:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:00:00, 11:02:00): TeamX:14 11:01:59 LATE    index=2 onTimeIndex=1",
-                "[11:02:00, 11:04:00): TeamX:10 11:03:59 EARLY   index=0 isFirst",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 EARLY   index=0 isFirst",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:06:00, 11:08:00): TeamX:3  11:07:59 EARLY   index=0 isFirst",
-                "[11:06:00, 11:08:00): TeamX:12 11:07:59 ON_TIME index=1 onTimeIndex=0"
+                "[12:00:00, 12:02:00): TeamX:5  12:01:59 EARLY   index=0 isFirst",
+                "[12:00:00, 12:02:00): TeamX:5  12:01:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:00:00, 12:02:00): TeamX:14 12:01:59 LATE    index=2 onTimeIndex=1",
+                "[12:02:00, 12:04:00): TeamX:10 12:03:59 EARLY   index=0 isFirst",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 EARLY   index=0 isFirst",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:06:00, 12:08:00): TeamX:3  12:07:59 EARLY   index=0 isFirst",
+                "[12:06:00, 12:08:00): TeamX:12 12:07:59 ON_TIME index=1 onTimeIndex=0"
             };
         }
     }
@@ -304,15 +304,15 @@ public class BeamModel {
         @Override
         public String[] getExpectedResults() {
             return new String[] {
-                "[11:00:00, 11:02:00): TeamX:5  11:01:59 EARLY   index=0 isFirst",
-                "[11:00:00, 11:02:00): TeamX:5  11:01:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:00:00, 11:02:00): TeamX:11 11:01:59 LATE    index=2 onTimeIndex=1",
-                "[11:02:00, 11:04:00): TeamX:10 11:03:59 EARLY   index=0 isFirst",
-                "[11:02:00, 11:04:00): TeamX:18 11:03:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 EARLY   index=0 isFirst",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:06:00, 11:08:00): TeamX:3  11:07:59 EARLY   index=0 isFirst",
-                "[11:06:00, 11:08:00): TeamX:12 11:07:59 ON_TIME index=1 onTimeIndex=0"
+                "[12:00:00, 12:02:00): TeamX:5  12:01:59 EARLY   index=0 isFirst",
+                "[12:00:00, 12:02:00): TeamX:5  12:01:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:00:00, 12:02:00): TeamX:11 12:01:59 LATE    index=2 onTimeIndex=1",
+                "[12:02:00, 12:04:00): TeamX:10 12:03:59 EARLY   index=0 isFirst",
+                "[12:02:00, 12:04:00): TeamX:18 12:03:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 EARLY   index=0 isFirst",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:06:00, 12:08:00): TeamX:3  12:07:59 EARLY   index=0 isFirst",
+                "[12:06:00, 12:08:00): TeamX:12 12:07:59 ON_TIME index=1 onTimeIndex=0"
             };
         }
     }
@@ -335,15 +335,15 @@ public class BeamModel {
         @Override
         public String[] getExpectedResults() {
             return new String[] {
-                "[11:00:00, 11:02:00): TeamX:5  11:01:59 EARLY   index=0 isFirst",
-                "[11:00:00, 11:02:00): TeamX:0  11:01:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:00:00, 11:02:00): TeamX:9  11:01:59 LATE    index=2 onTimeIndex=1",
-                "[11:02:00, 11:04:00): TeamX:10 11:03:59 EARLY   index=0 isFirst",
-                "[11:02:00, 11:04:00): TeamX:8  11:03:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:04:00, 11:06:00): TeamX:4  11:05:59 EARLY   index=0 isFirst",
-                "[11:04:00, 11:06:00): TeamX:0  11:05:59 ON_TIME index=1 onTimeIndex=0",
-                "[11:06:00, 11:08:00): TeamX:3  11:07:59 EARLY   index=0 isFirst",
-                "[11:06:00, 11:08:00): TeamX:9  11:07:59 ON_TIME index=1 onTimeIndex=0"
+                "[12:00:00, 12:02:00): TeamX:5  12:01:59 EARLY   index=0 isFirst",
+                "[12:00:00, 12:02:00): TeamX:0  12:01:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:00:00, 12:02:00): TeamX:9  12:01:59 LATE    index=2 onTimeIndex=1",
+                "[12:02:00, 12:04:00): TeamX:10 12:03:59 EARLY   index=0 isFirst",
+                "[12:02:00, 12:04:00): TeamX:8  12:03:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:04:00, 12:06:00): TeamX:4  12:05:59 EARLY   index=0 isFirst",
+                "[12:04:00, 12:06:00): TeamX:0  12:05:59 ON_TIME index=1 onTimeIndex=0",
+                "[12:06:00, 12:08:00): TeamX:3  12:07:59 EARLY   index=0 isFirst",
+                "[12:06:00, 12:08:00): TeamX:9  12:07:59 ON_TIME index=1 onTimeIndex=0"
             };
         }
     }
@@ -366,15 +366,15 @@ public class BeamModel {
         @Override
         public String[] getExpectedResults() {
             return new String[] {
-                "[11:00:26, 11:01:26): TeamX:5  11:01:25 EARLY   index=0 isFirst",
-                "[11:00:26, 11:01:26): TeamX:5  11:01:25 ON_TIME index=1 onTimeIndex=0",
-                "[11:02:24, 11:03:24): TeamX:7  11:03:23 EARLY   index=0 isFirst",
-                "[11:02:24, 11:05:19): TeamX:22 11:05:18 EARLY   index=0 isFirst",
-                "[11:02:24, 11:05:19): TeamX:22 11:05:18 ON_TIME index=1 onTimeIndex=0",
-                "[11:00:26, 11:05:19): TeamX:36 11:05:18 LATE    index=0 onTimeIndex=0 isFirst",
-                "[11:06:39, 11:07:39): TeamX:3  11:07:38 EARLY   index=0 isFirst",
-                "[11:06:39, 11:08:46): TeamX:12 11:08:45 EARLY   index=0 isFirst",
-		"[11:06:39, 11:08:46): TeamX:12 11:08:45 ON_TIME index=1 onTimeIndex=0 isLast"
+                "[12:00:26, 12:01:26): TeamX:5  12:01:25 EARLY   index=0 isFirst",
+                "[12:00:26, 12:01:26): TeamX:5  12:01:25 ON_TIME index=1 onTimeIndex=0",
+                "[12:02:24, 12:03:24): TeamX:7  12:03:23 EARLY   index=0 isFirst",
+                "[12:02:24, 12:05:19): TeamX:22 12:05:18 EARLY   index=0 isFirst",
+                "[12:02:24, 12:05:19): TeamX:22 12:05:18 ON_TIME index=1 onTimeIndex=0",
+                "[12:00:26, 12:05:19): TeamX:36 12:05:18 LATE    index=0 onTimeIndex=0 isFirst",
+                "[12:06:39, 12:07:39): TeamX:3  12:07:38 EARLY   index=0 isFirst",
+                "[12:06:39, 12:08:46): TeamX:12 12:08:45 EARLY   index=0 isFirst",
+		"[12:06:39, 12:08:46): TeamX:12 12:08:45 ON_TIME index=1 onTimeIndex=0 isLast"
             };
         }
     }
@@ -396,15 +396,15 @@ public class BeamModel {
         @Override
         public String[] getExpectedResults() {
             return new String[] {
-                "[11:00:26, 11:01:25): TeamX:5  11:01:24 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:01:25, 11:02:24): TeamX:9  11:02:23 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:02:24, 11:03:06): TeamX:7  11:03:05 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:03:06, 11:03:39): TeamX:8  11:03:38 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:03:39, 11:04:19): TeamX:3  11:04:18 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:04:19, 11:06:39): TeamX:4  11:06:38 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:06:39, 11:07:26): TeamX:3  11:07:25 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:07:26, 11:07:46): TeamX:8  11:07:45 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
-                "[11:07:46, END_OF_GLOBAL_WINDOW): TeamX:1  04:00:54 ON_TIME index=0 onTimeIndex=0 isFirst isLast"
+                "[12:00:26, 12:01:25): TeamX:5  12:01:24 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:01:25, 12:02:24): TeamX:9  12:02:23 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:02:24, 12:03:06): TeamX:7  12:03:05 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:03:06, 12:03:39): TeamX:8  12:03:38 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:03:39, 12:04:19): TeamX:3  12:04:18 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:04:19, 12:06:39): TeamX:4  12:06:38 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:06:39, 12:07:26): TeamX:3  12:07:25 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:07:26, 12:07:46): TeamX:8  12:07:45 ON_TIME index=0 onTimeIndex=0 isFirst isLast",
+                "[12:07:46, END_OF_GLOBAL_WINDOW): TeamX:1  04:00:54 ON_TIME index=0 onTimeIndex=0 isFirst isLast"
             };
         }
     }

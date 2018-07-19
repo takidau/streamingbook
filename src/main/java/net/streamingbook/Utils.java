@@ -26,7 +26,7 @@ import org.joda.time.Instant;
 public class Utils {
 
     public static Instant parseTime(String time) {
-        return Instant.parse("T" + time);
+        return Instant.parse("T" + time + "Z");
     }
 
     public static DateTimeFormatter TIME_FMT = DateTimeFormat.forPattern("HH:mm:ss");

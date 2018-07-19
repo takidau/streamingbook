@@ -18,12 +18,12 @@ limitations under the License.
 
   <groupId>org.example</groupId>
   <artifactId>streaming-book-examples</artifactId>
-  <version>0.9.0</version>
+  <version>1.0.0</version>
 
   <packaging>jar</packaging>
 
   <properties>
-    <beam.version>2.6.0-SNAPSHOT</beam.version>
+    <beam.version>2.5.0</beam.version>
     <bigquery.version>v2-rev374-1.22.0</bigquery.version>
     <google-clients.version>1.22.0</google-clients.version>
     <guava.version>20.0</guava.version>
