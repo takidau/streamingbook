@@ -91,12 +91,12 @@ public class StateAndTimersTest {
 
     @Test
     public void stateTest() {
-        PCollection<String> teamScores =
+        PCollection<String> attributions =
             p.apply(createStream())
              .apply(ParDo.of(new StateAndTimers.AttributionFn()))
              .apply(ParDo.of(new StateAndTimers.FormatAttributionAsString()));
 
-        PAssert.that(teamScores)
+        PAssert.that(attributions)
             .containsInAnyOrder("[global window]: imp=123 http://search.com?q=xyz → http://xyz.com/ → http://xyz.com/join-mailing-list 12:01:30 UNKNOWN",
                                 "[global window]: imp=456 http://search.com?q=thing → http://xyz.com/thing → http://xyz.com/thing/add-to-cart → "
                                 + "http://xyz.com/thing/purchase → http://xyz.com/thing/receipt 12:03:45 UNKNOWN");
